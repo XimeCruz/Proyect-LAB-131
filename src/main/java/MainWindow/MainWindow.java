@@ -21,8 +21,12 @@ import javax.swing.JPanel;
 import museo.Museo;
 import museo.Sala;
 import panelArtista.PanelArtista;
+import panelMuseo.BuscarMuseoPanel;
+
 import panelMuseo.PanelMuseo;
 import panelProduccion.PanelProduccion;
+import panelSalas.PanelSalas;
+import panelSalas.PanelSalasProducciones;
 import panelVisitante.PanelVisitante;
 import persistencia.ArchReg;
 import personas.Artista;
@@ -44,6 +48,10 @@ public class MainWindow extends javax.swing.JFrame {
     private PanelArtista panel3;
     private PanelVisitante panel5;
     private PanelProduccion panel4;
+    private BuscarMuseoPanel buscarPanelMuseo;
+    private PanelSalas panelSalas;
+    private PanelSalasProducciones panelSalasProducciones;
+ 
     private LDNormal listaMuseos;
     private LDNormal listaArtistas;
     private LSNormal listaProducciones;
@@ -120,6 +128,10 @@ public class MainWindow extends javax.swing.JFrame {
         panel3 = new PanelArtista(this);
         panel4 = new PanelProduccion(this);
         panel5 = new PanelVisitante(this);
+        panelSalas = new PanelSalas(this);
+        buscarPanelMuseo = new BuscarMuseoPanel(this);
+        panelSalasProducciones = new PanelSalasProducciones(this);
+  
     }
 
     /**
@@ -164,6 +176,9 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btn6 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        btn8 = new javax.swing.JPanel();
+        jLabel91 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
         btn7 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel89 = new javax.swing.JLabel();
@@ -328,7 +343,6 @@ public class MainWindow extends javax.swing.JFrame {
         idTicket = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 600));
 
         mainPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 2, new java.awt.Color(153, 153, 153)));
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -363,7 +377,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 15));
 
         btn1.setBackground(new java.awt.Color(0, 0, 51));
-        btn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn1MouseClicked(evt);
@@ -383,7 +397,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidePanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 160, 124, 60));
 
         btn2.setBackground(new java.awt.Color(0, 0, 51));
-        btn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn2MouseClicked(evt);
@@ -403,7 +417,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidePanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 220, 124, 60));
 
         btn3.setBackground(new java.awt.Color(0, 0, 51));
-        btn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn3MouseClicked(evt);
@@ -423,7 +437,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidePanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 280, 124, 60));
 
         btn4.setBackground(new java.awt.Color(0, 0, 51));
-        btn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn4MouseClicked(evt);
@@ -444,7 +458,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         btn5.setBackground(new java.awt.Color(0, 0, 51));
         btn5.setBorder(new javax.swing.border.MatteBorder(null));
-        btn5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn5MouseClicked(evt);
@@ -478,7 +492,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Cerrar Sesión");
         jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(255, 255, 255)));
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout btn6Layout = new javax.swing.GroupLayout(btn6);
         btn6.setLayout(btn6Layout);
@@ -491,10 +505,30 @@ public class MainWindow extends javax.swing.JFrame {
             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
         );
 
-        sidePanel.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 500, 124, 30));
+        sidePanel.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 124, 30));
+
+        btn8.setBackground(new java.awt.Color(0, 0, 51));
+        btn8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn8MouseClicked(evt);
+            }
+        });
+        btn8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn8.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 130, 30));
+
+        jLabel92.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel92.setText("Salas");
+        btn8.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 130, 10));
+
+        sidePanel.add(btn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 460, 124, 60));
 
         btn7.setBackground(new java.awt.Color(0, 0, 51));
-        btn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn7MouseClicked(evt);
@@ -530,7 +564,7 @@ public class MainWindow extends javax.swing.JFrame {
         headerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setText("X");
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel13MouseClicked(evt);
@@ -555,7 +589,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         addMuseum.setBackground(new java.awt.Color(255, 255, 255));
         addMuseum.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
-        addMuseum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addMuseum.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addMuseum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addMuseumMouseClicked(evt);
@@ -583,10 +617,15 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 255));
         jLabel21.setText("Actualizar Museo");
-        updateMuseum.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        updateMuseum.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         deleteMuseum.setBackground(new java.awt.Color(255, 255, 255));
         deleteMuseum.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
+        deleteMuseum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMuseumMouseClicked(evt);
+            }
+        });
         deleteMuseum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -595,11 +634,16 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel23.setText("Eliminar Museo");
-        deleteMuseum.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jLabel23.setText("Ver Salas");
+        deleteMuseum.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         museumDetails.setBackground(new java.awt.Color(255, 255, 255));
         museumDetails.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
+        museumDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                museumDetailsMouseClicked(evt);
+            }
+        });
         museumDetails.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -613,7 +657,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         addArtist.setBackground(new java.awt.Color(255, 255, 255));
         addArtist.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
-        addArtist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addArtist.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addArtist.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addArtistMouseClicked(evt);
@@ -691,7 +735,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(p1Layout.createSequentialGroup()
-                        .addGroup(p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(p1Layout.createSequentialGroup()
                                 .addGroup(p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -703,7 +747,7 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGap(280, 280, 280))
                             .addGroup(p1Layout.createSequentialGroup()
                                 .addComponent(addMuseum, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(updateMuseum, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteMuseum, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -723,7 +767,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(deleteArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(detailsArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         p1Layout.setVerticalGroup(
             p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -755,7 +799,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(updateArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(detailsArtist, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         centrePanel.add(p1, "card2");
@@ -833,7 +877,7 @@ public class MainWindow extends javax.swing.JFrame {
         agregarMuseoBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         agregarMuseoBtn.setForeground(new java.awt.Color(255, 255, 255));
         agregarMuseoBtn.setText("Agregar Museo");
-        agregarMuseoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarMuseoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarMuseoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarMuseoBtnActionPerformed(evt);
@@ -844,7 +888,7 @@ public class MainWindow extends javax.swing.JFrame {
         salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirBtn.setForeground(new java.awt.Color(255, 255, 255));
         salirBtn.setText("Salir");
-        salirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirBtnActionPerformed(evt);
@@ -859,7 +903,7 @@ public class MainWindow extends javax.swing.JFrame {
         agregarSalasBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         agregarSalasBtn1.setForeground(new java.awt.Color(255, 255, 255));
         agregarSalasBtn1.setText("Agregar Salas");
-        agregarSalasBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarSalasBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarSalasBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarSalasBtn1ActionPerformed(evt);
@@ -1000,7 +1044,7 @@ public class MainWindow extends javax.swing.JFrame {
         salirBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirBtn1.setForeground(new java.awt.Color(255, 255, 255));
         salirBtn1.setText("Salir");
-        salirBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirBtn1ActionPerformed(evt);
@@ -1012,7 +1056,7 @@ public class MainWindow extends javax.swing.JFrame {
         agregarProduccion.setForeground(new java.awt.Color(255, 255, 255));
         agregarProduccion.setText("Agregar ");
         agregarProduccion.setActionCommand("Agregar \nProducción");
-        agregarProduccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarProduccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarProduccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarProduccionActionPerformed(evt);
@@ -1029,7 +1073,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxMuseos.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxMuseos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxMuseos.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxMuseos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxMuseosItemStateChanged(evt);
@@ -1065,7 +1108,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         tipoProduccion.setBackground(new java.awt.Color(218, 228, 232));
         tipoProduccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tipoProduccion.setForeground(new java.awt.Color(0, 0, 0));
         tipoProduccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Concierto", "Sinfonía", "Presentación de arte", "Conversatorio", "Visita Guiada", "Proyección escénica", "Presentaciones de libro", " " }));
         tipoProduccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1086,7 +1128,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxSalas.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxSalas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxSalas.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxSalas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxSalasItemStateChanged(evt);
@@ -1238,7 +1279,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         addArtista.setBackground(new java.awt.Color(255, 255, 255));
         addArtista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
-        addArtista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addArtista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addArtista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addArtistaMouseClicked(evt);
@@ -1278,8 +1319,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel60.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel60.setText("Eliminar Aritista");
-        deleteArtista.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jLabel60.setText("Calcular Valor Obras");
+        deleteArtista.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         verArtista.setBackground(new java.awt.Color(255, 255, 255));
         verArtista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
@@ -1296,7 +1337,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         addVisitante.setBackground(new java.awt.Color(255, 255, 255));
         addVisitante.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 3, new java.awt.Color(153, 153, 153)));
-        addVisitante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addVisitante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addVisitante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addVisitanteMouseClicked(evt);
@@ -1412,7 +1453,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(p11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(verArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel75))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         p11Layout.setVerticalGroup(
             p11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1443,7 +1484,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(updateVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(verVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         centrePanel.add(p11, "card2");
@@ -1485,7 +1526,7 @@ public class MainWindow extends javax.swing.JFrame {
         salirBtn2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirBtn2.setForeground(new java.awt.Color(255, 255, 255));
         salirBtn2.setText("Salir");
-        salirBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirBtn2ActionPerformed(evt);
@@ -1497,7 +1538,7 @@ public class MainWindow extends javax.swing.JFrame {
         agregarProduccion1.setForeground(new java.awt.Color(255, 255, 255));
         agregarProduccion1.setText("Agregar ");
         agregarProduccion1.setActionCommand("Agregar \nProducción");
-        agregarProduccion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarProduccion1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarProduccion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarProduccion1ActionPerformed(evt);
@@ -1514,7 +1555,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxMuseosArtista.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxMuseosArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxMuseosArtista.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxMuseosArtista.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxMuseosArtistaItemStateChanged(evt);
@@ -1534,7 +1574,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxSalasArtista.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxSalasArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxSalasArtista.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxSalasArtista.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxSalasArtistaItemStateChanged(evt);
@@ -1570,7 +1609,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxProduccionesArtista.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxProduccionesArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxProduccionesArtista.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxProduccionesArtista.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxProduccionesArtistaItemStateChanged(evt);
@@ -1753,7 +1791,7 @@ public class MainWindow extends javax.swing.JFrame {
         salirBtn3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         salirBtn3.setForeground(new java.awt.Color(255, 255, 255));
         salirBtn3.setText("Salir");
-        salirBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirBtn3ActionPerformed(evt);
@@ -1765,7 +1803,7 @@ public class MainWindow extends javax.swing.JFrame {
         agregarVisitante.setForeground(new java.awt.Color(255, 255, 255));
         agregarVisitante.setText("Agregar ");
         agregarVisitante.setActionCommand("Agregar \nProducción");
-        agregarVisitante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarVisitante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarVisitante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarVisitanteActionPerformed(evt);
@@ -1782,7 +1820,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxMuseosVisitante.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxMuseosVisitante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxMuseosVisitante.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxMuseosVisitante.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxMuseosVisitanteItemStateChanged(evt);
@@ -1802,7 +1839,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxSalasVisitante.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxSalasVisitante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxSalasVisitante.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxSalasVisitante.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxSalasVisitanteItemStateChanged(evt);
@@ -1838,7 +1874,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         comboBoxProduccionesVisitante.setBackground(new java.awt.Color(218, 228, 232));
         comboBoxProduccionesVisitante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxProduccionesVisitante.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxProduccionesVisitante.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxProduccionesVisitanteItemStateChanged(evt);
@@ -1967,7 +2002,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel90)
                     .addComponent(idTicket))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2030,6 +2065,8 @@ public class MainWindow extends javax.swing.JFrame {
         onLeaveClick(btn3);
         onLeaveClick(btn4);
         onLeaveClick(btn5);
+        onLeaveClick(btn7);
+        onLeaveClick(btn8);
 
         // cambiando panel on click
         setPanel(p1);
@@ -2043,7 +2080,8 @@ public class MainWindow extends javax.swing.JFrame {
         onLeaveClick(btn3);
         onLeaveClick(btn4);
         onLeaveClick(btn5);
-
+        onLeaveClick(btn7);
+        onLeaveClick(btn8);
         // cambiando panel on click
         setPanel(panel2);
 
@@ -2056,6 +2094,8 @@ public class MainWindow extends javax.swing.JFrame {
         onClick(btn3);
         onLeaveClick(btn4);
         onLeaveClick(btn5);
+        onLeaveClick(btn7);
+        onLeaveClick(btn8);
         // cambiando panel on click
         setPanel(panel3);
     }//GEN-LAST:event_btn3MouseClicked
@@ -2067,6 +2107,8 @@ public class MainWindow extends javax.swing.JFrame {
         onLeaveClick(btn3);
         onClick(btn4);
         onLeaveClick(btn5);
+        onLeaveClick(btn7);
+        onLeaveClick(btn8);
         // cambiando panel on click
         setPanel(panel4);
     }//GEN-LAST:event_btn4MouseClicked
@@ -2078,6 +2120,8 @@ public class MainWindow extends javax.swing.JFrame {
         onLeaveClick(btn3);
         onLeaveClick(btn4);
         onClick(btn5);
+        onLeaveClick(btn7);
+        onLeaveClick(btn8);
         // cambiando panel on click
         //setPanel(p5);
     }//GEN-LAST:event_btn5MouseClicked
@@ -2159,6 +2203,7 @@ public class MainWindow extends javax.swing.JFrame {
                     mx.setListaSalas(listaSalas);
                     listaMuseos.adiFin(mx);
                     panel2.datosATabla();
+                    panelSalas.datosATabla();
                     JOptionPane.showMessageDialog(null, "Museo registrado exitosamente");
                     //reset();
                 }
@@ -2246,15 +2291,18 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void agregarProduccionASala(String IdMuseo, String IdSala, Produccion x) {
         NodoD r = listaMuseos.getP();
-        while (r != null) {
+        boolean sw = false;
+        while (r != null && !sw) {
             Museo mx = (Museo) r.getDato();
-            if (mx.getId().equals(idMuseo)) {
+            String idMx = "(" + mx.getId() + ") " + mx.getNombre();
+            if (idMx.equals(IdMuseo)) {
                 NodoS w = mx.getListaSalas().getCabecera();
-                while (w != null) {
-                    Sala sw = (Sala) w.getDato();
-                    if (sw.getIdSala().equals(IdSala)) {
-                        sw.getListaProducciones().adiFin(x);
-                        break;
+                while (w != null && !sw) {
+                    Sala sx = (Sala) w.getDato();
+                    if (sx.getIdSala().equals(IdSala)) {
+                        System.out.println("produccion agregada");
+                        sx.getListaProducciones().adiFin(x);
+                        sw = true;
                     } else {
                         w = w.getSig();
                     }
@@ -2408,22 +2456,23 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void agregarArtistaAProduccion(String idMuseo, String idSala, String nombreProduccion, Artista x) {
         NodoD r = listaMuseos.getP();
-        while (r != null) {
+        boolean sw = false;
+        while (r != null && !sw) {
             Museo mx = (Museo) r.getDato();
             String idMx = "(" + mx.getId() + ") " + mx.getNombre();
             if (idMx.equals(idMuseo)) {
                 LSNormal lsx = mx.getListaSalas();
                 NodoS w = lsx.getCabecera();
-                while (w != null) {
+                while (w != null && !sw) {
                     Sala sx = (Sala) w.getDato();
                     if (idSala.equals(sx.getIdSala())) {
                         LDNormal lpx = sx.getListaProducciones();
                         NodoD z = lpx.getP();
-                        while (z != null) {
+                        while (z != null && !sw) {
                             Produccion px = (Produccion) z.getDato();
                             if (px.getNombre().equals(nombreProduccion)) {
                                 px.getListaArtistas().adiFin(x);
-                                break;
+                                sw = true;
                             } else {
                                 z = z.getSig();
                             }
@@ -2599,22 +2648,23 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxSalasVisitanteItemStateChanged
     private void agregarVisitanteAProduccion(String idMuseo, String idSala, String nombreProduccion, Visitante x){
         NodoD r = listaMuseos.getP();
-        while (r != null) {
+        boolean sw = false;
+        while (r != null && !sw) {
             Museo mx = (Museo) r.getDato();
             String idMx = "(" + mx.getId() + ") " + mx.getNombre();
             if (idMx.equals(idMuseo)) {
                 LSNormal lsx = mx.getListaSalas();
                 NodoS w = lsx.getCabecera();
-                while (w != null) {
+                while (w != null && !sw) {
                     Sala sx = (Sala) w.getDato();
                     if (idSala.equals(sx.getIdSala())) {
                         LDNormal lpx = sx.getListaProducciones();
                         NodoD z = lpx.getP();
-                        while (z != null) {
+                        while (z != null && !sw) {
                             Produccion px = (Produccion) z.getDato();
                             if (px.getNombre().equals(nombreProduccion)) {
                                 px.getPilaVisitantes().adicionar(x);
-                                break;
+                                sw = true;
                             } else {
                                 z = z.getSig();
                             }
@@ -2668,24 +2718,24 @@ public class MainWindow extends javax.swing.JFrame {
             try {
 
                 // Obtener datos de los campos de texto
-                String nombre, apellido, genero, tipo;
-                int ci = Integer.parseInt(ciArtista.getText());
+                String nombre, apellido, genero;
+                int ci = Integer.parseInt(ciVisitante.getText());
                 nombre = nombreVisitante.getText();
                 apellido = apellidoVisitante.getText();
                 genero = generoVisitante.getSelectedItem().toString();
                 int idT = Integer.parseInt(idTicket.getText());
                 // Validacion de campos no vacios
-                if (nombre.equals("") || apellido.equals("") || genero.equals("") || ciArtista.getText().equals("")) {
+                if (nombre.equals("") || apellido.equals("") || genero.equals("") || ciVisitante.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Llene todos los campos",
                             "Error al registrar el visitante", JOptionPane.ERROR_MESSAGE);
 
                 } else {
                     //int ci, String nombre, String apellido, String genero, String tipo
                     Visitante vx = new Visitante(ci, nombre, apellido, genero, idT);
-                    agregarVisitanteAProduccion(comboBoxMuseosArtista.getSelectedItem().toString(), comboBoxSalasArtista.getSelectedItem().toString(), comboBoxProduccionesArtista.getSelectedItem().toString(), vx);
+                    agregarVisitanteAProduccion(comboBoxMuseosVisitante.getSelectedItem().toString(), comboBoxSalasVisitante.getSelectedItem().toString(), comboBoxProduccionesVisitante.getSelectedItem().toString(), vx);
                     //listaProducciones.adiFin(px);
 
-                    panel3.datosATabla();
+                    panel5.datosATabla();
                     JOptionPane.showMessageDialog(null, "Visitante registrado exitosamente");
                     //reset();
                 }
@@ -2708,33 +2758,28 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void idTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idTicketMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_idTicketMouseClicked
-
-    private void addVisitanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addVisitanteKeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_addVisitanteKeyPressed
-
-    private void idTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTicketActionPerformed
-        // TODO add your handling code here:
         NodoD r = listaMuseos.getP();
-        while (r != null) {
+        boolean sw = false;
+        while (r != null && !sw) {
             Museo mx = (Museo) r.getDato();
             String idMx = "(" + mx.getId() + ") " + mx.getNombre();
             if (idMx.equals(comboBoxMuseosVisitante.getSelectedItem().toString())) {
+                System.out.println("Entra1");
                 LSNormal lsx = mx.getListaSalas();
                 NodoS w = lsx.getCabecera();
-                while (w != null) {
+                while (w != null && !sw) {
                     Sala sx = (Sala) w.getDato();
                     if ((comboBoxSalasVisitante.getSelectedItem().toString()).equals(sx.getIdSala())) {
+                        System.out.println("Entra2");
                         LDNormal lpx = sx.getListaProducciones();
                         NodoD z = lpx.getP();
-                        while (z != null) {
+                        while (z != null && !sw) {
                             Produccion px = (Produccion) z.getDato();
-                            if (px.getNombre().equals(nombreProduccion)) {
+                            if (px.getNombre().equals(comboBoxProduccionesVisitante.getSelectedItem().toString())) {
+                                System.out.println("Entra3");
                                 int idT = px.getPilaVisitantes().nElem()+1;
-                                idTicket.setText(String.format("%f", idT));
-                                break;
+                                idTicket.setText(String.format("%d", idT));
+                                sw = true;
                             } else {
                                 z = z.getSig();
                             }
@@ -2750,12 +2795,52 @@ public class MainWindow extends javax.swing.JFrame {
                 r = r.getSig();
             }
         }
+        
+    }//GEN-LAST:event_idTicketMouseClicked
+
+    private void addVisitanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addVisitanteKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_addVisitanteKeyPressed
+
+    private void idTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTicketActionPerformed
+        // TODO add your handling code here:
+        
     }//GEN-LAST:event_idTicketActionPerformed
 
     private void btn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseClicked
         // TODO add your handling code here:
+        onLeaveClick(btn1);
+        onLeaveClick(btn2);
+        onLeaveClick(btn3);
+        onLeaveClick(btn4);
+        onClick(btn7);
+        onLeaveClick(btn8);
         setPanel(panel5);
     }//GEN-LAST:event_btn7MouseClicked
+
+    private void museumDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_museumDetailsMouseClicked
+        // TODO add your handling code here:
+        setPanel(buscarPanelMuseo);
+        
+    }//GEN-LAST:event_museumDetailsMouseClicked
+
+    private void deleteMuseumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMuseumMouseClicked
+        // TODO add your handling code here:
+        setPanel(panelSalasProducciones);
+        
+    }//GEN-LAST:event_deleteMuseumMouseClicked
+
+    private void btn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseClicked
+        // TODO add your handling code here:
+        onLeaveClick(btn1);
+        onLeaveClick(btn2);
+        onLeaveClick(btn3);
+        onLeaveClick(btn4);
+        onLeaveClick(btn7);
+        onClick(btn8);
+        setPanel(panelSalas);
+    }//GEN-LAST:event_btn8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2823,6 +2908,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel btn5;
     private javax.swing.JPanel btn6;
     private javax.swing.JPanel btn7;
+    private javax.swing.JPanel btn8;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> categoriaArtista;
     private javax.swing.JPanel centrePanel;
@@ -2940,6 +3026,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
