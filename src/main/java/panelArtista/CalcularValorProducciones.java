@@ -30,22 +30,24 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listaProduccionesMuseo = new javax.swing.JList<>();
+        listaProduccionesArtista = new javax.swing.JList<>();
         jLabel35 = new javax.swing.JLabel();
-        idMuseo = new javax.swing.JTextField();
+        ciArtista = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel36 = new javax.swing.JLabel();
-        nombreMuseo = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         jLabel37 = new javax.swing.JLabel();
-        salirBtn = new javax.swing.JButton();
+        buscarBtn = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
-        tipoMuseo = new javax.swing.JTextField();
+        nombreArtista = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        circuitoMuseo = new javax.swing.JTextField();
+        tipoArtista = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        nroProduccionesMuseo = new javax.swing.JTextField();
+        nroProduccionesArtista = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        valorNeto = new javax.swing.JTextField();
+        museoArtista = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(218, 228, 232));
         jPanel1.setForeground(new java.awt.Color(0, 0, 104));
@@ -56,12 +58,12 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Producciones");
 
-        listaProduccionesMuseo.setModel(new javax.swing.AbstractListModel<String>() {
+        listaProduccionesArtista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(listaProduccionesMuseo);
+        jScrollPane3.setViewportView(listaProduccionesArtista);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,46 +83,31 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
                 .addComponent(jLabel44)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 0, 104));
         jLabel35.setText("CI");
 
-        idMuseo.setBackground(new java.awt.Color(218, 228, 232));
-        idMuseo.setBorder(null);
-        idMuseo.setCaretColor(new java.awt.Color(0, 0, 104));
+        ciArtista.setBackground(new java.awt.Color(218, 228, 232));
+        ciArtista.setBorder(null);
+        ciArtista.setCaretColor(new java.awt.Color(0, 0, 104));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 104));
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 104));
-        jLabel36.setText("Museo");
-
-        nombreMuseo.setBackground(new java.awt.Color(218, 228, 232));
-        nombreMuseo.setBorder(null);
-        nombreMuseo.setCaretColor(new java.awt.Color(0, 0, 104));
-        nombreMuseo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreMuseoActionPerformed(evt);
-            }
-        });
-
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 104));
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 0, 104));
         jLabel37.setText("Nombre");
 
-        salirBtn.setBackground(new java.awt.Color(255, 0, 51));
-        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        salirBtn.setForeground(new java.awt.Color(255, 255, 255));
-        salirBtn.setText("Salir");
-        salirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        salirBtn.addActionListener(new java.awt.event.ActionListener() {
+        buscarBtn.setBackground(new java.awt.Color(0, 0, 104));
+        buscarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buscarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        buscarBtn.setText("Calcular");
+        buscarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirBtnActionPerformed(evt);
+                buscarBtnActionPerformed(evt);
             }
         });
 
@@ -128,40 +115,65 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         jLabel39.setForeground(new java.awt.Color(0, 0, 104));
         jLabel39.setText("Tipo");
 
-        tipoMuseo.setBackground(new java.awt.Color(218, 228, 232));
-        tipoMuseo.setBorder(null);
-        tipoMuseo.setCaretColor(new java.awt.Color(0, 0, 104));
-        tipoMuseo.addActionListener(new java.awt.event.ActionListener() {
+        nombreArtista.setBackground(new java.awt.Color(218, 228, 232));
+        nombreArtista.setBorder(null);
+        nombreArtista.setCaretColor(new java.awt.Color(0, 0, 104));
+        nombreArtista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoMuseoActionPerformed(evt);
+                nombreArtistaActionPerformed(evt);
             }
         });
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 104));
 
-        circuitoMuseo.setBackground(new java.awt.Color(218, 228, 232));
-        circuitoMuseo.setBorder(null);
-        circuitoMuseo.setCaretColor(new java.awt.Color(0, 0, 104));
-        circuitoMuseo.addActionListener(new java.awt.event.ActionListener() {
+        tipoArtista.setBackground(new java.awt.Color(218, 228, 232));
+        tipoArtista.setBorder(null);
+        tipoArtista.setCaretColor(new java.awt.Color(0, 0, 104));
+        tipoArtista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                circuitoMuseoActionPerformed(evt);
+                tipoArtistaActionPerformed(evt);
             }
         });
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 104));
 
-        nroProduccionesMuseo.setBackground(new java.awt.Color(218, 228, 232));
-        nroProduccionesMuseo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 104)));
-        nroProduccionesMuseo.setCaretColor(new java.awt.Color(0, 0, 104));
-        nroProduccionesMuseo.addActionListener(new java.awt.event.ActionListener() {
+        nroProduccionesArtista.setBackground(new java.awt.Color(218, 228, 232));
+        nroProduccionesArtista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 104)));
+        nroProduccionesArtista.setCaretColor(new java.awt.Color(0, 0, 104));
+        nroProduccionesArtista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nroProduccionesMuseoActionPerformed(evt);
+                nroProduccionesArtistaActionPerformed(evt);
             }
         });
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 0, 104));
         jLabel41.setText("Nro. Producciones");
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 104));
+        jLabel42.setText("Valor Neto");
+
+        valorNeto.setBackground(new java.awt.Color(218, 228, 232));
+        valorNeto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 104)));
+        valorNeto.setCaretColor(new java.awt.Color(0, 0, 104));
+        valorNeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorNetoActionPerformed(evt);
+            }
+        });
+
+        museoArtista.setBackground(new java.awt.Color(218, 228, 232));
+        museoArtista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        museoArtista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Concierto", "Sinfonía", "Presentación de arte", "Conversatorio", "Visita Guiada", "Proyección escénica", "Presentaciones de libro", " " }));
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 104));
+        jLabel38.setText("Museo");
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 104));
+        jLabel40.setText("Bs.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,66 +182,90 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(salirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel39)
+                                        .addGap(357, 357, 357))
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombreArtista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tipoArtista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nroProduccionesMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel36)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel39)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(idMuseo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jSeparator3)
-                            .addComponent(nombreMuseo, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addComponent(jSeparator4)
-                            .addComponent(tipoMuseo, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addComponent(circuitoMuseo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel37)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator2)
+                                        .addComponent(ciArtista)
+                                        .addComponent(museoArtista, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel41)
+                                                    .addGap(50, 50, 50)
+                                                    .addComponent(nroProduccionesArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel42)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(valorNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(3, 3, 3)
+                                            .addComponent(jLabel40)))
+                                    .addComponent(jLabel35))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel38)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel35)
-                .addGap(16, 16, 16)
-                .addComponent(idMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ciArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel38)
+                .addGap(12, 12, 12)
+                .addComponent(museoArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buscarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(circuitoMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel39)
+                .addGap(18, 18, 18)
+                .addComponent(tipoArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
-                    .addComponent(nroProduccionesMuseo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nroProduccionesArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(salirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(valorNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -237,7 +273,7 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 49, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -246,11 +282,7 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreMuseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreMuseoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreMuseoActionPerformed
-
-    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
 
         /*p1_addMuseumPanel.setVisible(false);
@@ -260,41 +292,48 @@ public class CalcularValorProducciones extends javax.swing.JPanel {
         p4.setVisible(false);
         p5.setVisible(false);
         reset();*/
-    }//GEN-LAST:event_salirBtnActionPerformed
-
-    private void tipoMuseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMuseoActionPerformed
+    }//GEN-LAST:event_buscarBtnActionPerformed
+    public void llenarcomboBoxMuseo(){
+    }
+    private void nombreArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreArtistaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipoMuseoActionPerformed
+    }//GEN-LAST:event_nombreArtistaActionPerformed
 
-    private void circuitoMuseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circuitoMuseoActionPerformed
+    private void nroProduccionesArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nroProduccionesArtistaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_circuitoMuseoActionPerformed
+    }//GEN-LAST:event_nroProduccionesArtistaActionPerformed
 
-    private void nroProduccionesMuseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nroProduccionesMuseoActionPerformed
+    private void valorNetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorNetoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nroProduccionesMuseoActionPerformed
+    }//GEN-LAST:event_valorNetoActionPerformed
+
+    private void tipoArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoArtistaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoArtistaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField circuitoMuseo;
-    private javax.swing.JTextField idMuseo;
+    private javax.swing.JButton buscarBtn;
+    private javax.swing.JTextField ciArtista;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JList<String> listaProduccionesMuseo;
-    private javax.swing.JTextField nombreMuseo;
-    private javax.swing.JTextField nroProduccionesMuseo;
-    private javax.swing.JButton salirBtn;
-    private javax.swing.JTextField tipoMuseo;
+    private javax.swing.JList<String> listaProduccionesArtista;
+    private javax.swing.JComboBox<String> museoArtista;
+    private javax.swing.JTextField nombreArtista;
+    private javax.swing.JTextField nroProduccionesArtista;
+    private javax.swing.JTextField tipoArtista;
+    private javax.swing.JTextField valorNeto;
     // End of variables declaration//GEN-END:variables
 }
